@@ -1,18 +1,32 @@
-# API Contract – Winbou Prices
+# Winbou Prices API
 
-This branch defines the **API contract** (`openapi.yaml`) for the Winbou Prices service.
-
-## Purpose
-- Follow an **API-first** approach: the contract is defined **before** any implementation.
-- Ensure that the service implementation, persistence, and tests will be built strictly against this specification.
-
-## Contents
-- `src/main/resources/openapi.yaml` → OpenAPI 3.0 specification of the REST endpoint `/prices`.
-
-## Next steps
-- Implement the domain and infrastructure layers following hexagonal architecture.
-- Expose the REST adapter in compliance with this contract.
-- Add exception handling and tests (unit, integration, and e2e) using the defined schema.
+This project implements an API-first approach using OpenAPI specification.
 
 ---
-By committing this contract first, we demonstrate the **API-first methodology** required by the assignment.
+
+## 📑 API First
+
+The API contract is defined in [`openapi.yaml`](./src/main/resources/openapi.yaml).
+
+- The API is designed first and code is generated/implemented against this contract.
+- You can explore the endpoints using Swagger UI once the application is running:
+
+## Domain layer
+
+The domain layer was implemented following hexagonal architecture and DDD principles:
+- `Price` aggregate with validation rules
+- Domain exceptions (`InvalidPriceException`, `PriceNotFoundException`)
+- `PriceRepository` port abstraction
+- `PriceDomainService` encapsulating business logic (select applicable price by priority)
+
+This layer is fully independent of infrastructure and frameworks.
+
+
+## 🧪 Tests
+
+Run domain unit tests with:
+```bash
+mvn test
+```
+
+---
