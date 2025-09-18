@@ -9,7 +9,6 @@ This project implements an API-first approach using OpenAPI specification.
 The API contract is defined in [`openapi.yaml`](./src/main/resources/static/openapi.yaml).
 
 - The API is designed first and code is generated/implemented against this contract.
-- You can explore the endpoints using Swagger UI once the application is running:
 
 ## 📖 API Documentation
 
