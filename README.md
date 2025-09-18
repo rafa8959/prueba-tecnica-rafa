@@ -1,4 +1,4 @@
-# Winbou Prices API
+# Prices API
 
 This project implements an API-first approach using OpenAPI specification.
 
