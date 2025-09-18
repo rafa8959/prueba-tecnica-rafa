@@ -4,10 +4,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.inditex.price.domain.model.Price;
 
+@Service
 public class PriceDomainService {
-
 	
     public Optional<Price> selectApplicablePrice(List<Price> prices) {
         return prices.stream()
