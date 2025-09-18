@@ -151,4 +151,25 @@ It contains predefined requests covering the required test cases:
 You can import this collection into Postman and execute the requests directly against the running application.
 
 
+## 🐳 Docker
+
+This project can be built and run inside a Docker container.
+
+### Build the image
+```bash
+docker build -t winbou-prices-api .
+```
+
+**Run the container**
+
+```bash
+docker run -p 8080:8080 winbou-prices-api
+```
+
+**Notes**
+
+Dockerfile is located in the project root (./Dockerfile).
+.dockerignore excludes unnecessary files (like target/, .git/, IDE configs).
+
+
 ---
