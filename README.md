@@ -109,11 +109,12 @@ mvn spring-boot:run
 By default, the service will be available at:
 http://localhost:8080
 
-Example request
+**Example request**
+
 GET http://localhost:8080/prices?applicationDate=2020-06-14T10:00:00&productId=35455&brandId=1
 
 
-Example successful response (200 OK)
+**Example successful response (200 OK)**
 
 {
   "productId": 35455,
@@ -125,7 +126,7 @@ Example successful response (200 OK)
   "currency": "EUR"
 }
 
-Example error response (404 Not Found)
+**Example error response (404 Not Found)**
 
 {
   "timestamp": "2025-09-18T20:00:00",
