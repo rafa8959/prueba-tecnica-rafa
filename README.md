@@ -35,6 +35,13 @@ The database schema and initial data are loaded from:
 - [`data.sql`](./src/main/resources/data.sql)
 
 
+## ⚙️ Application layer
+
+The application layer implements the system use cases and coordinates domain + persistence:
+
+- `GetApplicablePriceUseCase` orchestrates the retrieval of applicable prices.
+
+
 ## 🧪 Tests
 
 Run domain unit tests with:
