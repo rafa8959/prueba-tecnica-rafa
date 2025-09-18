@@ -21,6 +21,19 @@ The domain layer was implemented following hexagonal architecture and DDD princi
 
 This layer is fully independent of infrastructure and frameworks.
 
+## 💾 Persistence layer
+
+The persistence layer was implemented using Spring Data JPA with an H2 in-memory database:
+
+- `PriceEntity` and `PriceId` model the `PRICES` table structure.
+- `SpringDataPriceRepository` is the JPA repository interface.
+- `PriceRepositoryImpl` is the adapter that implements the domain `PriceRepository` port, delegating to JPA.
+- `PriceEntityMapper` handles the conversion between JPA entities and domain models.
+
+The database schema and initial data are loaded from:
+- [`schema.sql`](./src/main/resources/schema.sql)
+- [`data.sql`](./src/main/resources/data.sql)
+
 
 ## 🧪 Tests
 
