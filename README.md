@@ -16,17 +16,19 @@ Swagger UI is available once the application is running:
 
 - [Swagger UI](http://localhost:8080/swagger-ui.html)
 
+
+## 🏗️ Architecture
+
+This project follows Hexagonal Architecture and DDD principles, separating domain logic from infrastructure.
+
 ## Domain layer
 
-The domain layer was implemented following hexagonal architecture and DDD principles:
 - `Price` aggregate with validation rules
 - Domain exceptions (`InvalidPriceException`, `PriceNotFoundException`)
 - `PriceRepository` port abstraction
 - `PriceDomainService` encapsulating business logic (select applicable price by priority)
 
-This layer is fully independent of infrastructure and frameworks.
-
-## 💾 Persistence layer
+## Persistence layer
 
 The persistence layer was implemented using Spring Data JPA with an H2 in-memory database:
 
@@ -40,9 +42,7 @@ The database schema and initial data are loaded from:
 - [`data.sql`](./src/main/resources/data.sql)
 
 
-## ⚙️ Application layer
-
-The application layer implements the system use cases and coordinates domain + persistence:
+## Application layer
 
 - `GetApplicablePriceUseCase` orchestrates the retrieval of applicable prices.
 
@@ -57,6 +57,18 @@ The REST layer exposes the API to clients:
   - `PriceNotFoundException` → **404 Not Found**
   - `InvalidPriceException` → **400 Bad Request**
 
+
+## 🎬 Live Demo
+
+A demo deployment is available so you can test the API without running it locally:
+
+- Base URL: [https://rafaedo.com/prices](https://rafaedo.com/prices?applicationDate=2020-06-14T10:00:00&productId=35455&brandId=1)
+- Swagger UI: [https://rafaedo.com/swagger-ui.html](https://rafaedo.com/swagger-ui.html)
+
+### Example request
+```http
+GET https://rafaedo.com/prices?applicationDate=2020-06-14T10:00:00&productId=35455&brandId=1
+```
 
 ## 🧪 Tests
 The project includes:
@@ -98,45 +110,6 @@ JSON report: target/cucumber-reports/cucumber.json
 Open cucumber.html in a browser to explore the scenarios and results.
 
 
-## 🚀 Running the app
-
-Start the Spring Boot application with:
-
-```bash
-mvn spring-boot:run
-```
-
-By default, the service will be available at:
-http://localhost:8080
-
-**Example request**
-
-GET http://localhost:8080/prices?applicationDate=2020-06-14T10:00:00&productId=35455&brandId=1
-
-
-**Example successful response (200 OK)**
-
-{
-  "productId": 35455,
-  "brandId": 1,
-  "priceList": 1,
-  "startDate": "2020-06-14T00:00:00",
-  "endDate": "2020-12-31T23:59:59",
-  "price": 35.50,
-  "currency": "EUR"
-}
-
-**Example error response (404 Not Found)**
-
-{
-  "timestamp": "2025-09-18T20:00:00",
-  "status": 404,
-  "error": "Not Found",
-  "message": "No applicable price found for brand=1, product=35455",
-  "path": "/prices"
-}
-
-
 ## 📬 Postman collection
 
 A Postman collection is included in [`postman/Inditex Prices API.postman_collection.json`](./postman/Inditex Prices API.postman_collection.json).  
@@ -166,10 +139,19 @@ docker build -t winbou-prices-api .
 docker run -p 8080:8080 winbou-prices-api
 ```
 
+**Access:**
+
+- API: http://localhost:8080/prices
+
+- Swagger: http://localhost:8080/swagger-ui.html
+
 **Notes**
 
 Dockerfile is located in the project root (./Dockerfile).
+
 .dockerignore excludes unnecessary files (like target/, .git/, IDE configs).
+
+
 
 
 ---
